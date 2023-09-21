@@ -20,8 +20,9 @@ class RayPPOTrainer(abc.ABC):
 
     def __init__(self) -> None:
         super().__init__()
-        self._remote_actor = actor.Actor.remote(actor_config)
-        self._remote_critic = critic.Critic.remote(critic_config)
+
+        self._remote_actor = actor.Actor.options().remote(actor_config)
+        self._remote_critic = critic.Critic.options()remote(critic_config)
         self._remote_initial = initial.Initial.remote(initial_config)
         self._remote_reward = reward.Reward.remote(reward_config)
 
